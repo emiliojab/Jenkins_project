@@ -40,13 +40,13 @@ if __name__ == "__main__":
         table = cursor.fetchall()
 
         # change encoder to meet MongoDB standards using the class CustomEncoder
-        table = json.dumps(table,cls=CustomEncoder)
+        table = json.dumps(table, cls=CustomEncoder)
         table  = json.loads(table)
 
         if len(table) > 0:
             # insert table list into MongoDB
-            x = collection.insert_many(table)
-            print(f"Insterted {table_name}: {len(x.inserted_ids)} records.")
+            ids = collection.insert_many(table)
+            print(f"Insterted {table_name}: {len(ids.inserted_ids)} records.")
         else:
             print("Nothing was inserted")
 
