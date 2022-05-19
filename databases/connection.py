@@ -23,7 +23,7 @@ class MongoDB(Connect):
         self._conf = config.MongoDBConfig()
         (self.mongoDB_username, self.mongoDB_pwd,
             self.mongoDB_port, self.mongoDB_ip_address,
-                self.mongoDB_database, self.mongDB) = self._conf.get_credentials()
+                self.mongoDB_database, self.mongoDB) = self._conf.get_credentials()
 
     def connect_to_DB(self) -> MongoClient:
         """Opens and returns a MongoDB connection."""
