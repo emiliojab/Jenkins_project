@@ -16,7 +16,7 @@ class Connect(object):
 
 class MongoDB(Connect):
 
-    def __init__(self, database) -> None:
+    def __init__(self) -> None:
         """parameters:
                 database(string): the database name to connect to"""
         super().__init__()
@@ -31,7 +31,7 @@ class MongoDB(Connect):
 
 class MySQL(Connect):
 
-    def __init__(self, database) -> None:
+    def __init__(self) -> None:
         """parameters:
                 database(string): the database name to connect to"""
         super().__init__()
