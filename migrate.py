@@ -1,19 +1,21 @@
 from databases.connection import MySQL, MongoDB
 import simplejson as json
 from encoder import CustomEncoder
-
-mysql_schema = 'classicmodels'
-MongoDB_db = 'admin'
+from dotenv import load_dotenv
+import os
 
 if __name__ == "__main__":
+    load_dotenv()
+    mysql_schema = os.getenv("MYSQL_DATABASE")
+    mongDB_db = os.getenv("MONGODB_DATABASE")
     # connecto to MySQL database
-    mysql = MySQL(mysql_schema)
+    mysql = MySQL()
     mysql_cnx = mysql.connect_to_DB()
 
     # connecto to MongoDB
-    mongodb = MongoDB(MongoDB_db)
+    mongodb = MongoDB()
     mongodb_cnx = mongodb.connect_to_DB()
-    mdb = mongodb_cnx.Jenkins
+    mdb = mongodb_cnx[mongDB_db]
 
     # get the list of tables in the MySQL database 
     table_list_cursor = mysql_cnx.cursor(dictionary=True)

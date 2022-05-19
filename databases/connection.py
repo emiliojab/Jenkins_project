@@ -22,12 +22,12 @@ class MongoDB(Connect):
         super().__init__()
         self._conf = config.MongoDBConfig()
         (self.mongoDB_username, self.mongoDB_pwd,
-                    self.mongoDB_port, self.mongoDB_ip_address) = self._conf.get_credentials()
-        self.mongoDB_database = database
+            self.mongoDB_port, self.mongoDB_ip_address,
+                self.mongoDB_database, self.mongDB) = self._conf.get_credentials()
 
     def connect_to_DB(self) -> MongoClient:
         """Opens and returns a MongoDB connection."""
-        return MongoClient(f'mongodb://{self.mongoDB_username}:{self.mongoDB_pwd}@{self.mongoDB_ip_address}:{self.mongoDB_port}/{self.mongoDB_database}')
+        return MongoClient(f'mongodb://{self.mongoDB_username}:{self.mongoDB_pwd}@{self.mongoDB_ip_address}:{self.mongoDB_port}/{self.mongoDB}')
 
 class MySQL(Connect):
 
@@ -37,8 +37,8 @@ class MySQL(Connect):
         super().__init__()
         self._conf = config.MySQLConfig()
         (self.MySQL_user, self.MySQL_pwd,
-                    self.MySQL_port, self.MySQL_host) = self._conf.get_credentials()
-        self.MySQL_database = database
+            self.MySQL_port, self.MySQL_host,
+                self.MySQL_database) = self._conf.get_credentials()
 
     def connect_to_DB(self) -> connection:
         """Opens and returns a MySQL connection."""
