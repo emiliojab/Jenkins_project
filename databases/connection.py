@@ -23,7 +23,6 @@ class MongoDB(Connect):
         self._conf = config.MongoDBConfig()
         (self.mongoDB_username, self.mongoDB_pwd,
                     self.mongoDB_port, self.mongoDB_ip_address) = self._conf.get_credentials()
-        self.mongoDB_pwd = urllib.parse.quote_plus(self.mongoDB_pwd)
         self.mongoDB_database = database
 
     def connect_to_DB(self) -> MongoClient:
@@ -39,7 +38,6 @@ class MySQL(Connect):
         self._conf = config.MySQLConfig()
         (self.MySQL_user, self.MySQL_pwd,
                     self.MySQL_port, self.MySQL_host) = self._conf.get_credentials()
-        self.MySQL_pwd = urllib.parse.quote_plus(self.MySQL_pwd)
         self.MySQL_database = database
 
     def connect_to_DB(self) -> connection:
