@@ -1,6 +1,7 @@
 from abc import abstractmethod
 from dotenv import load_dotenv
 import os
+import urllib
 
 
 class Config(object):
@@ -21,7 +22,7 @@ class MongoDBConfig(Config):
         """Get the credentials for MongoDB database connection from the .env file"""
         super().__init__()
         self.__mongoDB_username = os.getenv("MONGODB_USERNAME")
-        self.__mongoDB_pwd = os.getenv("MONGODB_PWD")
+        self.__mongoDB_pwd = urllib.parse.quote_plus(os.getenv("MONGODB_PWD"))
         self.__mongoDB_port = os.getenv("MONGODB_PORT")
         self.__mongoDB_ip_address = os.getenv("MONGODB_IP")
         self.__mongoDB_database = os.getenv("MONGODB_DATABASE")
@@ -39,7 +40,7 @@ class MySQLConfig(Config):
         """Get the credentials for MySQL database connection from the .env file"""
         super().__init__()
         self.__MySQL_user = os.getenv("MYSQL_USER")
-        self.__MySQL_pwd = os.getenv("MYSQL_PWD")
+        self.__MySQL_pwd = urllib.parse.quote_plus(os.getenv("MYSQL_PWD"))
         self.__MySQL_port = os.getenv("MYSQL_PORT")
         self.__MySQL_host = os.getenv("MYSQL_HOST")
         self.__MySQL_database = os.getenv("MYSQL_DATABASE")

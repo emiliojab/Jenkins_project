@@ -27,7 +27,7 @@ class MongoDB(Connect):
 
     def connect_to_DB(self) -> MongoClient:
         """Opens and returns a MongoDB connection."""
-        print(f'mongodb://{self.mongoDB_username}:{self.mongoDB_pwd}@{self.mongoDB_ip_address}:{self.mongoDB_port}/{self.mongoDB}')
+        # print(f'mongodb://{self.mongoDB_username}:{self.mongoDB_pwd}@{self.mongoDB_ip_address}:{self.mongoDB_port}/{self.mongoDB}')
         return MongoClient(f'mongodb://{self.mongoDB_username}:{self.mongoDB_pwd}@{self.mongoDB_ip_address}:{self.mongoDB_port}/{self.mongoDB}')
 
 class MySQL(Connect):
